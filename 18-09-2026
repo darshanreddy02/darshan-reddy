@@ -1,0 +1,84 @@
+#include <stdio.h>
+int stack[5];
+int top = -1;
+void push(int x)
+{
+    if (top >= 4)
+    {
+        printf("Stack Overflow\n");
+    }
+    else
+    {
+        top = top + 1;
+        stack[top] = x;
+    }
+}
+
+void pop()
+{
+    if (top == -1)
+  {       printf("Stack Underflow\n");
+    }
+  else   {
+    printf("Popped element is %d\n", stack[top]);
+       top = top - 1;
+    }
+}
+void show()
+{
+    int i;
+    if (top == -1)
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+        for (i = top; i >= 0; i--)
+        {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int choice, n;
+
+    do
+    {
+        printf("\n1.Push");
+        printf("\n2.Pop");
+        printf("\n3.Display");
+        printf("\n4.Exit");
+        printf("\nEnter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1)
+        {
+            printf("Enter number: ");
+            scanf("%d", &n);
+            push(n);
+        }
+        else if (choice == 2)
+        {
+            pop();
+        }
+        else if (choice == 3)
+        {
+            show();
+        }
+        else if (choice == 4)
+        {
+            printf("Program ended\n");
+        }
+        else
+        {
+            printf("Wrong choice\n");
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
+
